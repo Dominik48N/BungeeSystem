@@ -1,5 +1,6 @@
 package de.dominik48n.bungeesystem;
 
+import de.dominik48n.bungeesystem.config.ConfigStorage;
 import de.dominik48n.bungeesystem.config.MessageHandler;
 import lombok.Getter;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -14,6 +15,7 @@ public class BungeeSystemPlugin extends Plugin {
     @Getter private static BungeeSystemPlugin instance;
 
     private MessageHandler messageHandler;
+    private ConfigStorage configStorage;
 
     @Override
     public void onLoad() {
@@ -22,6 +24,10 @@ public class BungeeSystemPlugin extends Plugin {
 
     @Override
     public void onEnable() {
+
+        // Load the config
+        this.configStorage = new ConfigStorage( this );
+        this.configStorage.load();
 
         // Load all messages
         this.messageHandler = new MessageHandler( this );
