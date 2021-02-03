@@ -67,10 +67,8 @@ public class MessageHandler {
         }
     }
 
-    private Collection< String > getKeys( final boolean deep ) {
-        if ( deep ) return this.recursiveKeys( "" );
-
-        return this.configuration.getKeys();
+    public Collection< String > getKeys( final boolean deep ) {
+        return deep ? this.recursiveKeys( "" ) : this.configuration.getKeys();
     }
 
     private List< String > recursiveKeys( final String path ) {
