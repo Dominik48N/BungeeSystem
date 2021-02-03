@@ -1,5 +1,6 @@
 package de.dominik48n.bungeesystem;
 
+import de.dominik48n.bungeesystem.config.MessageHandler;
 import lombok.Getter;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
@@ -7,9 +8,12 @@ import net.md_5.bungee.api.plugin.PluginManager;
 /**
  * Created by Dominik48N on 03.02.2021
  */
+@Getter
 public class BungeeSystemPlugin extends Plugin {
 
     @Getter private static BungeeSystemPlugin instance;
+
+    private MessageHandler messageHandler;
 
     @Override
     public void onLoad() {
@@ -18,6 +22,10 @@ public class BungeeSystemPlugin extends Plugin {
 
     @Override
     public void onEnable() {
+
+        // Load all messages
+        this.messageHandler = new MessageHandler( this );
+        this.messageHandler.load();
 
         // Register all commands and listeners
         this.registerListeners();
