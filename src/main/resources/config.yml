@@ -1,0 +1,9 @@
+###
+# MongoDB Database
+###
+mongodb:
+  hostname: "127.0.0.1"
+  database: "bungeesystem"
+  username: "admin"
+  password: "password"
+  port: 27017
